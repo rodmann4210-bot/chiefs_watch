@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cardinals Watch — Your Team. Every Day.</title>
+<title>Chiefs Watch — Your Team. Every Day.</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--burgundy:#b3122e;--burgundy-deep:#7a0c1f;--burgundy-bright:#c41e3a;--gold:#f3c14b;--gold-dim:#c79a3a;--bg:#0a0f1c;--bg-2:#0f1526;--panel:#141b30;--panel-2:#18203a;--ink:#f3ece0;--muted:#a9b4c8;--muted-2:#6f7b93;--red:#ff8275;--green:#5fb47a;--line:rgba(243,193,75,.22);--line-soft:rgba(243,193,75,.10);--glow1:rgba(196,30,58,.42);--glow2:rgba(12,26,48,.6);--stripe:rgba(243,193,75,.022)}
+  :root{--burgundy:#be1226;--burgundy-deep:#7d0a17;--burgundy-bright:#e31837;--gold:#ffb81c;--gold-dim:#c9952f;--bg:#120406;--bg-2:#1a070b;--panel:#1f0a0d;--panel-2:#270c12;--ink:#f6ece0;--muted:#c8a892;--muted-2:#8c6f5b;--red:#ff7a6e;--green:#5fb47a;--line:rgba(255,184,28,.22);--line-soft:rgba(255,184,28,.10);--glow1:rgba(227,24,55,.45);--glow2:rgba(125,10,23,.4);--stripe:rgba(255,184,28,.025)}
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:var(--bg);color:var(--ink);font-family:'Barlow',sans-serif;-webkit-font-smoothing:antialiased}
   body{
@@ -136,13 +136,13 @@
 </style>
 </head>
 <body>
-<div class="ticker"><div class="tag">BIRD&nbsp;WIRE</div><div class="track" id="ticker"><span>Loading the latest around the league&hellip;</span></div></div>
+<div class="ticker"><div class="tag">CHIEFS&nbsp;WIRE</div><div class="track" id="ticker"><span>Loading the latest around the league&hellip;</span></div></div>
 <div class="wrap">
   <header>
     <div class="head">
       <div class="brand">
-        <div class="crest">STL</div>
-        <div><h1>CARDINALS <span class="g">WATCH</span></h1><div class="sub">Your Team &middot; Every Day &middot; The Birds</div></div>
+        <div class="crest">KC</div>
+        <div><h1>CHIEFS <span class="g">WATCH</span></h1><div class="sub">Your Team &middot; Every Day &middot; Red &amp; Gold</div></div>
       </div>
       <div class="status"><div class="live"><span class="dot"></span> Live Feed</div><div class="upd" id="updated">Syncing&hellip;</div></div>
     </div>
@@ -155,11 +155,11 @@
     </div>
   </header>
   <div class="grid">
-    <section class="panel col-8"><div class="p-head"><span class="bar"></span><h2>Roster</h2><span class="ct" id="rosterCt"></span></div><div class="p-body scroll" id="roster"><div class="loading">Pulling roster&hellip;</div></div></section>
-    <section class="panel col-4"><div class="p-head"><span class="bar"></span><h2>Injured List</h2><span class="ct" id="injCt"></span></div><div class="p-body scroll" id="injuries"><div class="loading">Checking the report&hellip;</div></div></section>
-    <section class="panel col-8"><div class="p-head"><span class="bar"></span><h2>Around the League</h2><span class="ct">MLB Wire</span></div><div class="p-body scroll news" id="news"><div class="loading">Loading headlines&hellip;</div></div></section>
-    <section class="panel col-4"><div class="p-head"><span class="bar"></span><h2>NL Central</h2><span class="ct">Standings</span></div><div class="p-body east" id="east"><div class="loading">Loading division&hellip;</div></div></section>
-    <section class="panel col-12"><div class="p-head"><span class="bar"></span><h2>Locked On Cardinals &mdash; Latest Episodes</h2><span class="ct">Daily Pod</span></div><div class="p-body pod" id="pod"><div class="loading">Fetching episodes&hellip;</div></div></section>
+    <section class="panel col-8"><div class="p-head"><span class="bar"></span><h2>Roster &amp; Depth</h2><span class="ct" id="rosterCt"></span></div><div class="p-body scroll" id="roster"><div class="loading">Pulling roster&hellip;</div></div></section>
+    <section class="panel col-4"><div class="p-head"><span class="bar"></span><h2>Injury Report</h2><span class="ct" id="injCt"></span></div><div class="p-body scroll" id="injuries"><div class="loading">Checking the report&hellip;</div></div></section>
+    <section class="panel col-8"><div class="p-head"><span class="bar"></span><h2>Around the League</h2><span class="ct">NFL Wire</span></div><div class="p-body scroll news" id="news"><div class="loading">Loading headlines&hellip;</div></div></section>
+    <section class="panel col-4"><div class="p-head"><span class="bar"></span><h2>AFC West</h2><span class="ct">Standings</span></div><div class="p-body east" id="east"><div class="loading">Loading division&hellip;</div></div></section>
+    <section class="panel col-12"><div class="p-head"><span class="bar"></span><h2>Locked On Chiefs &mdash; Latest Episodes</h2><span class="ct">Daily Pod</span></div><div class="p-body pod" id="pod"><div class="loading">Fetching episodes&hellip;</div></div></section>
   </div>
   <footer>
     <div>Data: <span class="g">ESPN</span> (scores &middot; roster &middot; injuries &middot; news) &middot; <span class="g">iTunes / Locked On</span> (podcast). Keyless public feeds.</div>
@@ -172,35 +172,38 @@
   <div class="drawer-hd"><span class="bar"></span><h2>Film Room</h2><button id="filmClose" aria-label="Close">&#10005;</button></div>
   <div class="drawer-body">
     <div class="src">
-      <div class="src-hd"><span class="nm">Baseball Reference</span><span class="tag">Stats &middot; Free</span></div>
+      <div class="src-hd"><span class="nm">Pro Football Reference</span><span class="tag">Stats &middot; Free</span></div>
       <div class="jump"><input id="ref1Input" list="playerList" placeholder="Jump to a player&hellip;"><button id="ref1Go">Go</button></div>
       <div class="links">
-        <a href="https://www.baseball-reference.com/teams/STL/2026.shtml" target="_blank" rel="noopener">Cardinals &mdash; 2026 (roster, batting, pitching) <span class="ar">&#8599;</span></a>
-        <a href="https://www.baseball-reference.com/teams/STL/" target="_blank" rel="noopener">Franchise Hub &amp; History <span class="ar">&#8599;</span></a>
+        <a href="https://www.pro-football-reference.com/teams/kan/2026.htm" target="_blank" rel="noopener">Chiefs &mdash; 2026 Season <span class="ar">&#8599;</span></a>
+        <a href="https://www.pro-football-reference.com/teams/kan/2026_roster.htm" target="_blank" rel="noopener">Roster &amp; Snap Counts <span class="ar">&#8599;</span></a>
+        <a href="https://www.pro-football-reference.com/teams/kan/" target="_blank" rel="noopener">Franchise Hub &amp; History <span class="ar">&#8599;</span></a>
+        <a href="https://www.pro-football-reference.com/years/2026/" target="_blank" rel="noopener">League Leaders &amp; Standings <span class="ar">&#8599;</span></a>
       </div>
     </div>
     <div class="src">
-      <div class="src-hd"><span class="nm">FanGraphs</span><span class="tag">Advanced &middot; Free</span></div>
-      <div class="jump"><input id="ref2Input" list="playerList" placeholder="Find a player on FanGraphs&hellip;"><button id="ref2Go">Go</button></div>
+      <div class="src-hd"><span class="nm">PFF</span><span class="tag">Grades &middot; Subscription</span></div>
+      <div class="jump"><input id="ref2Input" list="playerList" placeholder="Find a player on PFF&hellip;"><button id="ref2Go">Go</button></div>
       <div class="links">
-        <a href="https://www.fangraphs.com/teams/cardinals" target="_blank" rel="noopener">Cardinals Team Page <span class="ar">&#8599;</span></a>
-        <a href="https://www.fangraphs.com/standings" target="_blank" rel="noopener">Standings &amp; Playoff Odds <span class="ar">&#8599;</span></a>
+        <a href="https://www.google.com/search?q=site%3Apff.com%20kansas%20city%20chiefs" target="_blank" rel="noopener">Chiefs Team Page <span class="ar">&#8981;</span></a>
+        <a href="https://www.google.com/search?q=site%3Apff.com%20kansas%20city%20chiefs%20roster%20player%20grades" target="_blank" rel="noopener">Roster &amp; Player Grades <span class="ar">&#8981;</span></a>
+        <a href="https://www.google.com/search?q=site%3Apff.com%20kansas%20city%20chiefs%20lineup%20depth%20chart" target="_blank" rel="noopener">Lineup &amp; Depth <span class="ar">&#8981;</span></a>
       </div>
     </div>
-    <div class="drawer-note">Links open in a new tab. <span class="g">Baseball Reference &amp; FanGraphs are free</span> &mdash; no login. Player "Go" routes through each site's search, so spelling-close is fine.</div>
+    <div class="drawer-note">Links open in a new tab. PFR links go straight in. The <span class="g">&#8981; PFF links route through a quick search</span> so they never dead-end when PFF reshuffles its site &mdash; click the top result. Player "Go" works the same way. (PFF may ask you to log in for premium grades.)</div>
   </div>
 </aside>
 <datalist id="playerList"></datalist>
 <script>
-const SPORT_PATH="baseball/mlb";
+const SPORT_PATH="football/nfl";
 const SITE=`https://site.api.espn.com/apis/site/v2/sports/${SPORT_PATH}`;
-const TEAM="stl";
-const TEAM_RE="cardinals|st. louis|st louis";
-const DIVISION=[{abbr:"stl",name:"Cardinals"},{abbr:"chc",name:"Cubs"},{abbr:"mil",name:"Brewers"},{abbr:"cin",name:"Reds"},{abbr:"pit",name:"Pirates"}];
-const PODCAST_APPLE_ID="1371034395";
-const POD_NAME="Locked On Cardinals";
-const REF1_SEARCH_BASE="https://www.baseball-reference.com/search/search.fcgi?search=";
-const REF2_PREFIX="site:fangraphs.com ";
+const TEAM="kc";
+const TEAM_RE="chiefs|kansas city";
+const DIVISION=[{abbr:"kc",name:"Chiefs"},{abbr:"den",name:"Broncos"},{abbr:"lv",name:"Raiders"},{abbr:"lac",name:"Chargers"}];
+const PODCAST_APPLE_ID="1141081555";
+const POD_NAME="Locked On Chiefs";
+const REF1_SEARCH_BASE="https://www.pro-football-reference.com/search/search.fcgi?search=";
+const REF2_PREFIX="site:pff.com ";
 let nextGameDate=null, ROSTER_NAMES=[];
 const $=id=>document.getElementById(id);
 async function getJSON(u){const r=await fetch(u,{cache:"no-store"});if(!r.ok)throw new Error(r.status);return r.json();}
