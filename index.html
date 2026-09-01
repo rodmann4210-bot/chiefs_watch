@@ -251,17 +251,25 @@ function tcase(s){return(s||'').replace(/([A-Z])/g,' $1').replace(/^./,c=>c.toUp
 
 async function loadSchedule(){
   try{
-    const data=await getJSON(`${SITE}/teams/${TEAM}/schedule`);
-    const events=(data.events||[]).sort((a,b)=>new Date(a.date)-new Date(b.date));
-    const now=Date.now();
-    let next=events.find(e=>new Date(e.date).getTime()>now-3*3600*1000);
-    if(!next&&events.length)next=events[events.length-1];
-    if(!next){$('gameVs').textContent='Schedule TBD';return;}
-    nextGameDate=new Date(next.date);
-    const comp=(next.competitions&&next.competitions[0])||{};
+    // Scan scoreboard by date for next Kansas City Chiefs game
+    const now=new Date();
+    let nextGame=null;
+    for(let i=0;i<14;i++){
+      const d=new Date(now);d.setDate(d.getDate()+i);
+      const ds=d.toISOString().slice(0,10).replace(/-/g,'');
+      const data=await getJSON(`${SITE}/scoreboard?dates=${ds}`);
+      const game=(data.events||[]).find(ev=>
+        (ev.competitions&&ev.competitions[0]&&ev.competitions[0].competitors||[])
+        .some(c=>(c.team&&c.team.abbreviation||'').toUpperCase()==='KC')
+      );
+      if(game){nextGame=game;break;}
+    }
+    if(!nextGame){$('gameVs').textContent='Season starts soon';$('gameWhen').textContent='Check back closer to Week 1';return;}
+    nextGameDate=new Date(nextGame.date);
+    const comp=(nextGame.competitions&&nextGame.competitions[0])||{};
     const cs=comp.competitors||[];
-    const us=cs.find(c=>(c.team&&c.team.abbreviation||'').toLowerCase()===TEAM)||{};
-    const them=cs.find(c=>(c.team&&c.team.abbreviation||'').toLowerCase()!==TEAM)||{};
+    const us=cs.find(c=>(c.team&&c.team.abbreviation||'').toUpperCase()==='KC')||{};
+    const them=cs.find(c=>(c.team&&c.team.abbreviation||'').toUpperCase()!=='KC')||{};
     const home=us.homeAway==='home';
     const opp=(them.team&&(them.team.shortDisplayName||them.team.displayName))||'Opponent';
     const rec=us.records&&us.records[0]?us.records[0].summary:'';
@@ -270,7 +278,7 @@ async function loadSchedule(){
     $('gameWhen').textContent=nextGameDate.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
     const venue=comp.venue&&comp.venue.fullName?' &middot; '+comp.venue.fullName:'';
     $('gameMeta').innerHTML=nextGameDate.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'})+venue;
-  }catch(e){$('gameVs').textContent='Schedule unavailable';}
+  }catch(e){$('gameVs').textContent='Schedule unavailable';console.error(e);}
 }
 
 function tickCountdown(){
